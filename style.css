@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
 
 :root {
   --primary-color: #22254b;
@@ -22,12 +22,14 @@ header {
   justify-content: space-between;
   background-color: var(--secondary-color);
 }
-header h1{
+
+header h1 a {
+  text-decoration: none;
   color: #fff;
   font-family: "Oswald", sans-serif;
 }
 
-#form{
+#form {
   width: 30%;
 }
 
@@ -49,6 +51,23 @@ header h1{
   color: #7378c5;
 }
 
+#form.active .autocom-box {
+  opacity: 1;
+  pointer-events: auto;
+
+}
+
+.autocom-box li{
+  list-style: none;
+  border-radius: 3px;
+  opacity: 0;
+  display: none;
+}
+
+.autocom-box li:hover{
+  background-color: var(--primary-color);
+  color: #fff;
+}
 main {
   display: flex;
   flex-wrap: wrap;

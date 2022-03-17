@@ -13,7 +13,6 @@ function getMovies(url) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       showMovies(data.results);
     });
 }
@@ -27,11 +26,11 @@ function getColor(vote) {
 function showMovies(data) {
   main.innerHTML = "";
   data.forEach((movie) => {
-    const { title, poster_path, vote_average, overview } =
-      movie;
+    const { title, poster_path, vote_average, overview } = movie;
     const movieEl = document.createElement("div");
     movieEl.classList.add("movie");
     movieEl.innerHTML = `
+      
         <img
           src="${IMG_URL + poster_path}"
           alt="${title}"
@@ -49,13 +48,13 @@ function showMovies(data) {
     main.appendChild(movieEl);
   });
 }
-getMovies(API_URL);
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const searchTerm = search.value;
-
-  if (searchTerm) {
-    getMovies(searchURL + "&query=" + searchTerm);
+//--------------------DINAMIC SEARCH---------------------------
+search.onkeyup = (e) =>{
+  let searchText = e.target.value;
+  if (searchText) {
+    getMovies(searchURL + "&query=" + searchText);
   } else getMovies(API_URL);
-});
+}
+
+getMovies(API_URL);
